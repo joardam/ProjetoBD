@@ -133,3 +133,15 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000',
+    'https://127.0.0.1:8000',
+]
+
+# Configuração Dinâmica para o Codespaces
+if 'CODESPACE_NAME' in os.environ:
+    codespace_name = os.getenv("CODESPACE_NAME")
+    codespace_domain = os.getenv("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN")
+    csrf_trusted_origin = f"https://{codespace_name}-8000.{codespace_domain}"
+    CSRF_TRUSTED_ORIGINS.append(csrf_trusted_origin)
