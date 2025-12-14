@@ -5,13 +5,10 @@
 	],
 	"service": "web",
 	"workspaceFolder": "/app",
-    "postCreateCommand": "pip install -r requirements.txt",
-    
-    // Adicione esta seção de features:
+	"postCreateCommand": "pip install -r requirements.txt && python manage.py migrate",
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {}
 	},
-
 	"customizations": {
 		"vscode": {
 			"extensions": [
