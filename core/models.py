@@ -42,7 +42,10 @@ class Monitor(Aluno):
     Monitor herda de Aluno.
     """
     carga_horaria = models.IntegerField()
+    # Campo necessário para a Consulta 13 (WHERE M.turma_id IN ...)
     turma = models.ForeignKey('Turma', on_delete=models.CASCADE, related_name='monitores', null=True, blank=True)
+    # Campo necessário para a Consulta 08 (WHERE ativo = 1)
+    ativo = models.BooleanField(default=True)
 
     class Meta:
         db_table = 'academico_monitor'
@@ -125,6 +128,8 @@ class Relatorio(models.Model):
     tipo = models.CharField(max_length=50)
     conteudo = models.TextField(default="")
     data_envio = models.DateField(auto_now_add=True)
+    # Campo necessário para a Consulta 01 (WHERE R.nota IS NULL)
+    nota = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     monitor = models.ForeignKey(Monitor, on_delete=models.CASCADE, related_name='relatorios')
 
     class Meta:
