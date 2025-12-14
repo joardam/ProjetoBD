@@ -1,0 +1,27 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Última Atividade{% endblock %}
+{% block header %}Última Atividade de Inscrição{% endblock %}
+
+{% block content %}
+{% if atividades %}
+<table>
+    <thead>
+        <tr>
+            <th>Candidato</th>
+            <th>Data Submissão</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in atividades %}
+        <tr>
+            <td>{{ item.nome_candidato }}</td>
+            <td>{{ item.data_submissao }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhuma atividade encontrada.</p>
+{% endif %}
+{% endblock %}

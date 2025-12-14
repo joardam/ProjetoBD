@@ -1,0 +1,29 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Ficha do Monitor{% endblock %}
+{% block header %}Ficha Completa do Monitor{% endblock %}
+
+{% block content %}
+{% if monitores %}
+<table>
+    <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Disciplina</th>
+            <th>Orientador</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in monitores %}
+        <tr>
+            <td>{{ item.aluno }}</td>
+            <td>{{ item.disciplina }}</td>
+            <td>{{ item.orientador }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum monitor encontrado.</p>
+{% endif %}
+{% endblock %}

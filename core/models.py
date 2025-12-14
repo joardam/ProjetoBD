@@ -42,11 +42,21 @@ class Monitor(Aluno):
     Monitor herda de Aluno.
     """
     carga_horaria = models.IntegerField()
+    turma = models.ForeignKey('Turma', on_delete=models.CASCADE, related_name='monitores', null=True, blank=True)
 
     class Meta:
         db_table = 'academico_monitor'
         verbose_name = 'Monitor'
         verbose_name_plural = 'Monitores'
+
+class FuncionarioAdm(Usuario):
+    """
+    Funcionário Administrativo.
+    """
+    class Meta:
+        db_table = 'academico_funcionarioadm'
+        verbose_name = 'Funcionário Administrativo'
+        verbose_name_plural = 'Funcionários Administrativos'
 
 class Disciplina(models.Model):
     nome_disciplina = models.CharField(max_length=100)
@@ -101,6 +111,7 @@ class Documento(models.Model):
         verbose_name_plural = 'Documentos'
 
 class Cronograma(models.Model):
+    descricao = models.CharField(max_length=200, default="Cronograma Padrão")
     data_inicio = models.DateField()
     data_fim = models.DateField()
     candidatura = models.OneToOneField(Candidatura, on_delete=models.CASCADE, related_name='cronograma')
@@ -112,6 +123,7 @@ class Cronograma(models.Model):
 
 class Relatorio(models.Model):
     tipo = models.CharField(max_length=50)
+    conteudo = models.TextField(default="")
     data_envio = models.DateField(auto_now_add=True)
     monitor = models.ForeignKey(Monitor, on_delete=models.CASCADE, related_name='relatorios')
 

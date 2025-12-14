@@ -1,0 +1,27 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Disciplinas com Múltiplas Turmas{% endblock %}
+{% block header %}Disciplinas com Múltiplas Turmas{% endblock %}
+
+{% block content %}
+{% if disciplinas %}
+<table>
+    <thead>
+        <tr>
+            <th>Disciplina</th>
+            <th>Qtd. Turmas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in disciplinas %}
+        <tr>
+            <td>{{ item.nome_disciplina }}</td>
+            <td>{{ item.qtd_turmas }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhuma disciplina com múltiplas turmas encontrada.</p>
+{% endif %}
+{% endblock %}

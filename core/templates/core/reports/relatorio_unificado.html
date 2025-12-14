@@ -1,0 +1,27 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Relatório Unificado{% endblock %}
+{% block header %}Relatório Unificado de Membros{% endblock %}
+
+{% block content %}
+{% if membros %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in membros %}
+        <tr>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.tipo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum membro encontrado.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Volume de Documentação{% endblock %}
+{% block header %}Volume de Documentação por Candidatura{% endblock %}
+
+{% block content %}
+{% if documentos %}
+<table>
+    <thead>
+        <tr>
+            <th>ID Candidatura</th>
+            <th>Total Documentos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in documentos %}
+        <tr>
+            <td>{{ item.candidatura_id }}</td>
+            <td>{{ item.total_documentos }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum documento encontrado.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Contatos Administrativos{% endblock %}
+{% block header %}Contatos Administrativos{% endblock %}
+
+{% block content %}
+{% if contatos %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in contatos %}
+        <tr>
+            <td>{{ item.first_name }}</td>
+            <td>{{ item.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum contato administrativo encontrado.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Cronogramas Vigentes{% endblock %}
+{% block header %}Cronogramas Vigentes (2025.1){% endblock %}
+
+{% block content %}
+{% if cronogramas %}
+<table>
+    <thead>
+        <tr>
+            <th>Descrição</th>
+            <th>Data Início</th>
+            <th>Data Fim</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in cronogramas %}
+        <tr>
+            <td>{{ item.descricao }}</td>
+            <td>{{ item.data_inicio }}</td>
+            <td>{{ item.data_fim }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum cronograma vigente encontrado.</p>
+{% endif %}
+{% endblock %}

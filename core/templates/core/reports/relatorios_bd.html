@@ -1,0 +1,29 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Relatórios BD{% endblock %}
+{% block header %}Relatórios da Disciplina Banco de Dados{% endblock %}
+
+{% block content %}
+{% if relatorios %}
+<table>
+    <thead>
+        <tr>
+            <th>Monitor</th>
+            <th>Tipo</th>
+            <th>Conteúdo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in relatorios %}
+        <tr>
+            <td>{{ item.monitor }}</td>
+            <td>{{ item.tipo }}</td>
+            <td>{{ item.conteudo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum relatório encontrado para Banco de Dados.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Mapeamento de Alunos{% endblock %}
+{% block header %}Mapeamento de Alunos e Monitorias{% endblock %}
+
+{% block content %}
+{% if alunos %}
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Carga Horária</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in alunos %}
+        <tr>
+            <td>{{ item.first_name }}</td>
+            <td>{{ item.carga_horaria|default:"-" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum aluno encontrado.</p>
+{% endif %}
+{% endblock %}

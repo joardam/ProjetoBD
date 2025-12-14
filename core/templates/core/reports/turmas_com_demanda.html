@@ -1,0 +1,29 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Turmas com Demanda{% endblock %}
+{% block header %}Turmas com Demanda{% endblock %}
+
+{% block content %}
+{% if turmas %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Disciplina</th>
+            <th>Ano/Semestre</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in turmas %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.disciplina }}</td>
+            <td>{{ item.ano_semestre }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhuma turma com demanda encontrada.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Candidaturas Finalizadas{% endblock %}
+{% block header %}Candidaturas Finalizadas{% endblock %}
+
+{% block content %}
+{% if candidaturas %}
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Matrícula</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in candidaturas %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.matricula }}</td>
+            <td>{{ item.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhuma candidatura finalizada encontrada.</p>
+{% endif %}
+{% endblock %}

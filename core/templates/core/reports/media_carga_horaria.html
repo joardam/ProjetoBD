@@ -1,0 +1,25 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Média Carga Horária{% endblock %}
+{% block header %}Média de Carga Horária dos Monitores Ativos{% endblock %}
+
+{% block content %}
+{% if media %}
+<table>
+    <thead>
+        <tr>
+            <th>Média de Horas</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in media %}
+        <tr>
+            <td>{{ item.media_horas|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum dado encontrado.</p>
+{% endif %}
+{% endblock %}

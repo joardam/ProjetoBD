@@ -1,0 +1,31 @@
+{% extends 'core/base_reports.html' %}
+
+{% block title %}Relatórios Pendentes{% endblock %}
+{% block header %}Relatórios Pendentes de Avaliação{% endblock %}
+
+{% block content %}
+{% if relatorios %}
+<table>
+    <thead>
+        <tr>
+            <th>ID Monitor</th>
+            <th>Matrícula</th>
+            <th>Data Envio</th>
+            <th>Tipo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in relatorios %}
+        <tr>
+            <td>{{ item.monitor_id }}</td>
+            <td>{{ item.matricula }}</td>
+            <td>{{ item.data_envio }}</td>
+            <td>{{ item.tipo }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="empty">Nenhum relatório pendente encontrado.</p>
+{% endif %}
+{% endblock %}
