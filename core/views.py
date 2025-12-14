@@ -55,7 +55,7 @@ class RelatorioViewSet(viewsets.ModelViewSet):
     queryset = Relatorio.objects.all()
     serializer_class = RelatorioSerializer
 
-    
+
 def relatorios_pendentes(request):
     """
     Consulta 01: Relatórios Pendentes de Avaliação
@@ -66,7 +66,7 @@ def relatorios_pendentes(request):
             FROM academico_relatorio R
             JOIN academico_monitor M ON R.monitor_id = M.aluno_ptr_id
             JOIN academico_aluno A ON M.aluno_ptr_id = A.usuario_ptr_id
-            -- WHERE R.nota IS NULL (Removido conforme solicitado pois não existe campo nota)
+            WHERE R.nota IS NULL 
         """)
         relatorios = dictfetchall(cursor)
     return render(request, 'core/reports/relatorios_pendentes.html', {'relatorios': relatorios})
