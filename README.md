@@ -1,27 +1,5 @@
 # Walkthrough - Academic Monitoring System Backend
 
-I have successfully created the initial structure for your Django backend project.
-
-## What has been done
-
-1.  **Infrastructure**:
-    -   Created `Dockerfile` and `docker-compose.yml` for running the project with PostgreSQL.
-    -   Created `.devcontainer/devcontainer.json` for GitHub Codespaces compatibility.
-    -   Created `requirements.txt` with necessary dependencies.
-
-2.  **Django Project**:
-    -   Created the project configuration in `config/`.
-    -   Configured `settings.py` to use PostgreSQL and the custom user model.
-    -   Configured `urls.py` to include the core app APIs.
-
-3.  **Core App**:
-    -   Created the `core` app.
-    -   Implemented `models.py` with all requested entities and relationships, ensuring strict table naming with `academico_` prefix.
-    -   Implemented `serializers.py` for all models.
-    -   Implemented `views.py` with ViewSets for all models.
-    -   Implemented `urls.py` with a DefaultRouter to expose the API.
-    -   Configured `admin.py` to manage models in the Django Admin.
-
 ## How to Run
 
 1.  **Start the containers**:
