@@ -25,8 +25,7 @@ router.register(r'cronogramas', CronogramaViewSet)
 router.register(r'relatorios', RelatorioViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    # Reports
+    # Reports (Coloque as rotas específicas PRIMEIRO)
     path('relatorios/pendentes/', relatorios_pendentes, name='relatorios_pendentes'),
     path('relatorios/cronogramas/', cronogramas_vigentes, name='cronogramas_vigentes'),
     path('relatorios/candidaturas/', candidaturas_finalizadas, name='candidaturas_finalizadas'),
@@ -40,4 +39,7 @@ urlpatterns = [
     path('relatorios/unificado/', relatorio_unificado, name='relatorio_unificado'),
     path('relatorios/ultima-atividade/', ultima_atividade, name='ultima_atividade'),
     path('relatorios/bd/', relatorios_bd, name='relatorios_bd'),
+
+    # API Router (Coloque o router genérico POR ÚLTIMO)
+    path('', include(router.urls)),
 ]

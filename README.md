@@ -1,50 +1,25 @@
-# Walkthrough - Academic Monitoring System Backend
+Markdown# Sistema de Gerenciamento de Monitorias (SGM)
 
-## How to Run
+Este projeto implementa o backend de um sistema acadêmico para gestão de monitorias, desenvolvido com **Django Rest Framework** e **PostgreSQL**. O sistema inclui as 13 consultas SQL fundamentais para geração de relatórios gerenciais.
 
-1.  **Start the containers**:
-    Open a terminal in the project root and run:
-    ```bash
-    docker-compose up --build
-    ```
+## 🚀 Como Rodar no GitHub Codespaces
 
-2.  **Apply Migrations**:
-    Once the containers are running, open a new terminal (or use the existing one if detached) and run:
-    ```bash
-    docker-compose exec web python manage.py makemigrations core
-    docker-compose exec web python manage.py migrate
-    ```
+Este repositório está configurado com um *Dev Container*, o que significa que todo o ambiente (Python, Dependências, Banco de Dados) é configurado automaticamente.
 
-3.  **Create a Superuser**:
-    ```bash
-    docker-compose exec web python manage.py createsuperuser
-    ```
+### 1. Iniciar o Ambiente
+Ao abrir este repositório no GitHub Codespaces, aguarde o terminal configurar o container. O processo automático já executa:
+- Instalação das dependências (`pip install -r requirements.txt`).
+- Migração do banco de dados (`python manage.py migrate`).
 
-4.  **Access the System**:
-    -   **API Root**: http://localhost:8000/api/
-    -   **Admin**: http://localhost:8000/admin/
+### 2. Popular o Banco de Dados (Carga Inicial)
+Para testar todas as funcionalidades e relatórios imediatamente, execute o script de população que cria usuários, turmas, candidaturas e relatórios fictícios coerentes:
 
-## Project Structure
-```
-ProjetoBD/
-├── .devcontainer/
-│   └── devcontainer.json
-├── config/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-├── core/
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── serializers.py
-│   ├── urls.py
-│   └── views.py
-├── docker-compose.yml
-├── Dockerfile
-├── manage.py
-└── requirements.txt
-```
+1. Certifique-se de que o arquivo `popular_banco.py` está na raiz do projeto.
+2. No terminal do Codespaces, execute:
+
+```bash
+python manage.py shell < popular_banco.py
+Nota: Este script limpa o banco de dados antes de recriar os dados para evitar duplicatas.3. Acessar o SistemaApós rodar o script, o servidor já deve estar rodando (se não estiver, use python manage.py runserver 0.0.0.0:8000).Abra a aba "PORTS" no VS Code e clique no ícone do globo (Open in Browser) na porta 8000.🔑 Credenciais de Acesso (Geradas pelo Script)PerfilUsuárioSenhaAdministradoradmin_user123Professor (BD)prof_banco123Aluno (Monitor)aluno_monitor123📊 Relatórios Gerenciais (Consultas SQL)O sistema implementa 13 relatórios baseados em consultas SQL específicas. Acesse-os diretamente pelas URLs abaixo (adicione ao final do endereço do seu ambiente):IDDescrição do RelatórioURL de Acesso01Relatórios Pendentes (IS NULL)/api/relatorios/pendentes/02Cronogramas Vigentes (BETWEEN)/api/relatorios/cronogramas/03Candidaturas Finalizadas (IN)/api/relatorios/candidaturas/04Turmas com Demanda (EXISTS)/api/relatorios/turmas-demanda/05Ficha Completa do Monitor (JOINs)/api/relatorios/ficha-monitor/06Mapeamento de Alunos (LEFT JOIN)/api/relatorios/mapeamento-alunos/07Volume de Documentação (COUNT)/api/relatorios/volume-documentacao/08Média de Carga Horária (AVG)/api/relatorios/media-carga/09Disciplinas com Múltiplas Turmas/api/relatorios/disciplinas-multiplas/10Contatos Administrativos (NESTED)/api/relatorios/contatos-adm/11Relatório Unificado (UNION)/api/relatorios/unificado/12Última Atividade (ORDER BY)/api/relatorios/ultima-atividade/13Relatórios de BD (Complexa)/api/relatorios/bd/🛠 Comandos ÚteisSe precisar reiniciar o ambiente ou criar um superusuário manualmente:Criar Superusuário Manualmente:Bashpython manage.py createsuperuser
+Rodar Migrações (se alterar modelos):Bashpython manage.py makemigrations core
+python manage.py migrate
+Reiniciar o Servidor:Bashpython manage.py runserver 0.0.0.0:8000
